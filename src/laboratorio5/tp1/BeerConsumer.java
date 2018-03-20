@@ -30,8 +30,7 @@ public class BeerConsumer extends Thread {
         while(Boolean.TRUE)
         {
             int cant = this.random.nextInt(50); 
-            cant = beerHouse.get(cant, this);
-            //System.out.println("El cliente " + this.nombre + " consume: " + cant + " unidades");
+            beerHouse.get(cant, this);
             
             try
             {

@@ -8,7 +8,6 @@ import java.util.ArrayList;
  */
 public class BeerHouse {
     private int stock = 0;
-    //private int stocklleno = Boolean.FALSE;
 
     public synchronized int put(int value, BeerProducer a) 
     {
@@ -34,11 +33,6 @@ public class BeerHouse {
         stock += diferencia;
         System.out.println("El productor " + a.nombre  + " provee: " + diferencia + " unidades");
         return diferencia;
-        /*if (stock > 100) {
-            stock = 100;
-            //stocklleno = Boolean.TRUE;
-        }*/
-       
         
     }
     

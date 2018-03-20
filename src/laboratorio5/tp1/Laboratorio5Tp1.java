@@ -16,15 +16,12 @@ public class Laboratorio5Tp1 {
         BeerHouse beerHouse = new BeerHouse();
         
         BeerProducer antares = new BeerProducer(beerHouse, "antares");
-        antares.start();
         BeerProducer cheverry = new BeerProducer(beerHouse, "cheverry");
         cheverry.start();
+        antares.start();
         
         BeerConsumer paula = new BeerConsumer(beerHouse, "paula");
         BeerConsumer gatin = new BeerConsumer(beerHouse, "gatin");
-        
-        
-        
         paula.start();
         gatin.start();
         

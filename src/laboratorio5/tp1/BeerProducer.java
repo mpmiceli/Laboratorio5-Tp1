@@ -25,9 +25,8 @@ public class BeerProducer extends Thread
         while(Boolean.TRUE)
         {   
             int cant = this.random.nextInt(100);
-            cant = beerHouse.put(cant, this);
-            //System.out.println("El productor " + this.nombre + " provee: " + cant + " unidades");
-           
+            beerHouse.put(cant, this);
+            
             try
             {
                 Thread.sleep(TIEMPOESPERA);
