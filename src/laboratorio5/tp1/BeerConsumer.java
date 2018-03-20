@@ -14,7 +14,7 @@ import java.util.Random;
 public class BeerConsumer extends Thread {
     
     private final BeerHouse beerHouse;
-    private final String nombre;
+    public final String nombre;
     private final int TIEMPOESPERA = 1000;
     private Random random;
  
@@ -29,9 +29,9 @@ public class BeerConsumer extends Thread {
     {
         while(Boolean.TRUE)
         {
-            int cant = this.random.nextInt(50);  
-            System.out.println("El cliente " + this.nombre + " consume: " + cant + " unidades");
-            beerHouse.get(cant);
+            int cant = this.random.nextInt(50); 
+            cant = beerHouse.get(cant, this);
+            //System.out.println("El cliente " + this.nombre + " consume: " + cant + " unidades");
             
             try
             {

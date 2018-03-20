@@ -9,8 +9,8 @@ import java.util.Random;
 public class BeerProducer extends Thread
 {   
     private BeerHouse beerHouse;
-    private String nombre;
-    private final int TIEMPOESPERA = 1000;
+    public String nombre;
+    private final int TIEMPOESPERA = 1000 ;
     private Random random;
  
     public BeerProducer(BeerHouse beerHouse, String nombre) 
@@ -20,18 +20,14 @@ public class BeerProducer extends Thread
         this.random = new Random();
     }
  
-    @Override
-    /**
-     * Implementación de la hebra
-     */
     public void run() 
     {
         while(Boolean.TRUE)
         {   
             int cant = this.random.nextInt(100);
-            System.out.println("El productor " + this.nombre + " provee: " + cant + " unidades");
-            beerHouse.put(cant);
-            
+            cant = beerHouse.put(cant, this);
+            //System.out.println("El productor " + this.nombre + " provee: " + cant + " unidades");
+           
             try
             {
                 Thread.sleep(TIEMPOESPERA);
