@@ -12,8 +12,6 @@ public class BeerProducer extends Thread
     public String nombre;
     private final int TIEMPOESPERA = 1000 ;
     private Random random;
-    private volatile boolean stop = false;
-    private int counter = 0;
  
     public BeerProducer(BeerHouse beerHouse, String nombre) 
     {
@@ -38,6 +36,7 @@ public class BeerProducer extends Thread
                 System.err.println("Productor " + this.nombre + ": Error en run -> " + e.getMessage());
             }
         }while(beerHouse.stock > 0);
+        
         System.out.println("No hay mas stock de cervezas");
         this.stop();
         

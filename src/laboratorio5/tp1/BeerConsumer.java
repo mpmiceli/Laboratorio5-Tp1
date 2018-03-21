@@ -29,7 +29,7 @@ public class BeerConsumer extends Thread {
     {
         while(beerHouse.stock >0)
         {
-            int cant = this.random.nextInt(50); 
+            int cant = this.random.nextInt(100); 
             beerHouse.get(cant, this);
             
             try
