@@ -27,7 +27,7 @@ public class BeerConsumer extends Thread {
     
     public void run() 
     {
-        while(Boolean.TRUE)
+        while(beerHouse.stock >0)
         {
             int cant = this.random.nextInt(50); 
             beerHouse.get(cant, this);
@@ -41,5 +41,8 @@ public class BeerConsumer extends Thread {
                 System.err.println("Consumidor " + this.nombre + ": Error en run -> " + e.getMessage());
             }
         }
+        System.out.println("No hay mas stock de cervezas");
+        this.stop();
+        
     }
 }

@@ -25,5 +25,6 @@ public class Laboratorio5Tp1 {
         paula.start();
         gatin.start();
         
+        
     } 
 }

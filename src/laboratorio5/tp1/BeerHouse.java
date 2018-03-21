@@ -7,7 +7,8 @@ import java.util.ArrayList;
  * @author Paula
  */
 public class BeerHouse {
-    private int stock = 0;
+    protected int stock = 0;
+    int control = 0;
 
     public synchronized int put(int value, BeerProducer a) 
     {
@@ -19,9 +20,12 @@ public class BeerHouse {
             } 
             catch (InterruptedException e) 
             {
+                
                 System.err.println("Contenedor: Error en put -> " + e.getMessage());
+                
             }
         }
+        
         
         int diferencia = 100 - stock;
         if(value < diferencia){
@@ -30,10 +34,18 @@ public class BeerHouse {
             notifyAll();
             return value;
         }
-        stock += diferencia;
-        System.out.println("El productor " + a.nombre  + " provee: " + diferencia + " unidades");
-        return diferencia;
-        
+        if (value > diferencia){
+            stock += diferencia;
+            System.out.println("El productor " + a.nombre  + " provee: " + diferencia + " unidades");
+            return diferencia;
+        }
+        /*if (stock <= 0){
+            a.stop();
+            control = 1;
+            System.out.println("No quedan cervezas en stock, los clientes se retiran");
+            
+        }*/
+       return 0; 
     }
     
     public synchronized int get(int value, BeerConsumer a)
@@ -57,10 +69,10 @@ public class BeerHouse {
             return value;
         }
         
-        value = stock;
-        stock = 0;
-        System.out.println("El cliente " + a.nombre  + " consume: " + value + " unidades");
-        notifyAll();
-        return value;
+            value = stock;
+            stock = 0;
+            System.out.println("El cliente " + a.nombre  + " consume: " + value + " unidades");
+            notifyAll();
+        return 0;
     }
 }
